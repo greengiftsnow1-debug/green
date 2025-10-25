@@ -2,15 +2,25 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, User } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
+import { supabase } from '@/lib/supabaseClient';
 
 export default function Navbar() {
   const [showGifting, setShowGifting] = useState(false);
   const [showCorporate, setShowCorporate] = useState(false);
   const [showPersonal, setShowPersonal] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+
   const { user } = useAuth();
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    router.push('/login');
+  };
 
   return (
     <nav className="fixed w-full z-50 backdrop-blur-md bg-white/70 text-green-900 shadow-md">
@@ -61,11 +71,7 @@ export default function Navbar() {
                       ].map((item, i) => (
                         <Link
                           key={i}
-                          href={`/gifting/corporate/${item
-                            .toLowerCase()
-                            .replace(/ /g, '-')
-                            .replace(/&/g, '')
-                            .replace(/'/g, '')}`}
+                          href={`/gifting/corporate/${item.toLowerCase().replace(/ /g, '-').replace(/&/g, '').replace(/'/g, '')}`}
                           className="block px-4 py-2 hover:bg-green-100"
                         >
                           {item}
@@ -100,10 +106,7 @@ export default function Navbar() {
                       ].map((item, i) => (
                         <Link
                           key={i}
-                          href={`/gifting/personal/${item
-                            .toLowerCase()
-                            .replace(/ /g, '-')
-                            .replace(/'/g, '')}`}
+                          href={`/gifting/personal/${item.toLowerCase().replace(/ /g, '-').replace(/'/g, '')}`}
                           className="block px-4 py-2 hover:bg-green-100"
                         >
                           {item}
@@ -121,26 +124,38 @@ export default function Navbar() {
           <Link href="/about" className="hover:text-green-700">About</Link>
           <Link href="/contact" className="hover:text-green-700">Contact Us</Link>
 
-          {/* Auth Display */}
+          {/* Auth / Profile */}
           {user ? (
-            <div className="ml-4 flex items-center gap-3">
-              <span className="text-sm text-green-800 font-medium">
-                {user.user_metadata?.name || user.email}
-              </span>
-              <Link
-                href="/logout"
-                className="px-3 py-1 text-sm bg-red-100 hover:bg-red-200 rounded"
+            <div className="relative">
+              <button
+                onClick={() => setProfileOpen(!profileOpen)}
+                className="flex items-center gap-2 bg-green-100 p-2 rounded-full hover:bg-green-200 transition"
               >
-                Logout
-              </Link>
+                <User size={20} />
+                <span className="hidden md:block">{user.user_metadata?.name || user.email}</span>
+              </button>
+
+              {profileOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-50">
+                  <Link href="/profile" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Profile</Link>
+                  <Link href="/orders" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Orders</Link>
+                  <Link href="/payments" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Payment History</Link>
+                   <Link href="/logout" className="block px-4 py-2 hover:bg-red-100">Logout</Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 hover:bg-red-50 text-red-600"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           ) : (
-            <Link
-              href="/login"
-              className="ml-4 px-3 py-1 text-sm bg-green-100 hover:bg-green-200 rounded"
-            >
-              Login
-            </Link>
+            <>
+              <Link href="/login" className="px-4 py-2 bg-green-100 rounded hover:bg-green-200 transition">Login</Link>
+              <Link href="/login/signup" className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition">Sign Up</Link>
+              
+            </>
           )}
         </div>
 
@@ -161,7 +176,25 @@ export default function Navbar() {
           <Link href="/plant-care" className="block" onClick={() => setMenuOpen(false)}>Plant Care</Link>
           <Link href="/about" className="block" onClick={() => setMenuOpen(false)}>About</Link>
           <Link href="/contact" className="block" onClick={() => setMenuOpen(false)}>Contact Us</Link>
-          <Link href="/login" className="block" onClick={() => setMenuOpen(false)}>Login</Link>
+
+          {user ? (
+            <>
+              <Link href="/profile" className="block" onClick={() => setMenuOpen(false)}>Profile</Link>
+              <Link href="/orders" className="block" onClick={() => setMenuOpen(false)}>Orders</Link>
+              <Link href="/payments" className="block" onClick={() => setMenuOpen(false)}>Payment History</Link>
+              <button
+                onClick={handleLogout}
+                className="w-full text-left px-4 py-2 hover:bg-red-50 text-red-600"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link href="/login" className="block" onClick={() => setMenuOpen(false)}>Login</Link>
+              <Link href="/login/signup" className="block" onClick={() => setMenuOpen(false)}>Sign Up</Link>
+            </>
+          )}
         </div>
       )}
     </nav>
