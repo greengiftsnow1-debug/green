@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
     // Allow production builds to complete even if there are type errors
     ignoreBuildErrors: true,
   },
+  // You can add other config options here if needed
 };
 
 export default nextConfig;

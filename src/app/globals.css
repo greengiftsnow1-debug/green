@@ -28,3 +28,25 @@ body {
 body {
   cursor: url('/bee.png') 16 16, auto; /* Adjust 16 16 based on image center */
 }
+
+/* Make sure all form fields use readable text colors */
+input,
+textarea,
+select {
+  color: #14532d; /* dark green text for readability */
+  background-color: #ffffff; /* white background */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280; /* soft gray placeholder */
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #22c55e; /* green-500 */
+  box-shadow: 0 0 0 2px #bbf7d0; /* soft green glow */
+}
+

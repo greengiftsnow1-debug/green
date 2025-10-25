@@ -15,7 +15,8 @@ export default function CheckoutPage() {
   const [pincode, setPincode] = useState('');
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-  const upiId = '9630820926@axl';
+  const upiId = 'greengiftsnow5687@aubank';
+
 
   useEffect(() => {
     const gift = localStorage.getItem('customGift');

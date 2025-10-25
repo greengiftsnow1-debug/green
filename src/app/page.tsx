@@ -23,7 +23,9 @@ export default function Home() {
      
 
        
+
       <Categories />
+
       
       
       <CustomerReviews />
