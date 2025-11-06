@@ -59,12 +59,12 @@ export default async function OrdersPage() {
                   <td className="p-3 font-mono text-xs">{o.id}</td>
                   <td className="p-3">
                     <div className="font-semibold">{o.customer_name}</div>
-                    <div className="text-gray-700">{o.customer_phone}</div>
-                    <div className="text-gray-700">{o.customer_email}</div>
+                    <div className="text-black-700">{o.customer_phone}</div>
+                    <div className="text-black-700">{o.customer_email}</div>
                   </td>
                   <td className="p-3">
                     <div className="max-w-xs truncate">{o.customer_address}</div>
-                    <div className="text-gray-700">PIN: {o.customer_pincode}</div>
+                    <div className="text-black-700">PIN: {o.customer_pincode}</div>
                   </td>
                   <td className="p-3 align-top">
                     <ul className="max-w-xs list-disc pl-4">
@@ -104,7 +104,7 @@ export default async function OrdersPage() {
                           <option value="paid">paid</option>
                           <option value="failed">failed</option>
                         </select>
-                        <button className="ml-2 px-3 py-1 bg-green-700 text-white rounded">Save</button>
+                        <button className="ml-2 px-3 py-1 bg-green-700 text-black rounded">Save</button>
                       </form>
 
                       <form action={updateOrderStatus}>
@@ -116,7 +116,7 @@ export default async function OrdersPage() {
                           <option value="delivered">delivered</option>
                           <option value="cancelled">cancelled</option>
                         </select>
-                        <button className="ml-2 px-3 py-1 bg-green-700 text-white rounded">Save</button>
+                        <button className="ml-2 px-3 py-1 bg-green-700 text-black rounded">Save</button>
                       </form>
                     </div>
                   </td>
@@ -125,7 +125,7 @@ export default async function OrdersPage() {
 
               {(!orders || orders.length === 0) && (
                 <tr>
-                  <td className="p-6 text-center text-gray-700" colSpan={9}>
+                  <td className="p-6 text-center text-black-700" colSpan={9}>
                     No orders yet.
                   </td>
                 </tr>

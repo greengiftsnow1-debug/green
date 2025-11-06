@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { FaInstagram, FaWhatsapp, FaFacebookF } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp, FaFacebookF, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   const footerRef = useRef<HTMLElement>(null);
@@ -63,8 +63,8 @@ const Footer = () => {
           <p className="text-sm text-green-100 mb-2">
             Have questions? Visit our <a href="/faq" className="underline">FAQs</a> or contact us directly.
           </p>
-          <p className="text-sm">📞 +91 9630820926</p>
-          <p className="text-sm">📧 support@greengift.in</p>
+          <p className="text-sm">📞 +919243837364</p>
+          <p className="text-sm">📧 greengiftsnoww@gmail.com</p>
         </div>
       </div>
 
@@ -72,7 +72,7 @@ const Footer = () => {
       <div className="mt-12 border-t border-green-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-green-300">
         <div className="flex gap-4 mb-4 md:mb-0">
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/greengiftsnow?igsh=bmc0a3B4amJ6Nndk"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white"
@@ -80,7 +80,7 @@ const Footer = () => {
             <FaInstagram size={20} />
           </a>
           <a
-            href="https://wa.me/919630820926"
+            href="https://wa.me/9243837364"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white"
@@ -94,6 +94,16 @@ const Footer = () => {
             className="hover:text-white"
           >
             <FaFacebookF size={20} />
+
+          </a>
+           <a
+            href="https://youtube.com/@greengiftsnow?si=Q1JzhspSpC7wtFrT"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white"
+          >
+            <FaYoutube size={20} />
+            
           </a>
         </div>
         <p>© {new Date().getFullYear()} Green Gift. All rights reserved.</p>

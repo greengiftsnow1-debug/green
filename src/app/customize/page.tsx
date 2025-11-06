@@ -9,28 +9,27 @@ gsap.registerPlugin(ScrollTrigger);
 
 // 🌿 Plant Options
 const plants = [
-  { name: 'Areca Palm', image: '/images/customize/plant1.jpg', price: 299 },
-  { name: 'Snake Plant', image: '/images/customize/plant2.jpg', price: 249 },
-  { name: 'Peace Lily', image: '/images/customize/plant3.jpg', price: 229 },
+  
+  { name: 'Spider Plant', image: '/images/customize/Spider.jpg', price: 249 },
+  { name: 'Peace Lily', image: '/images/customize/Peace Lily.jpg', price: 229 },
   { name: 'Jade Plant', image: '/images/customize/plant4.jpg', price: 189 },
-  { name: 'Spider Plant', image: '/images/customize/plant5.jpg', price: 209 },
-  { name: 'Aloe Vera', image: '/images/customize/plant6.jpg', price: 159 },
-  { name: 'Ajwain', image: '/images/Ajwain.jpg', price: 159 },
+  { name: 'Aloe Vera', image: '/images/customize/Aloe Vera.jpg', price: 159 },
+  { name: 'Ajwain', image: '/images/customize/Ajwain.jpg', price: 159 },
   { name: 'Aralia', image: '/images/Arelia.jpg', price: 159 },
   { name: 'Begonia', image: '/images/Bigonia.jpg', price: 159 },
   { name: 'Eclipta', image: '/images/eclipa.jpg', price: 159 },
   { name: 'Erison', image: '/images/Erison.jpg', price: 159 },
   { name: 'Ficus', image: '/images/ficus.jpg', price: 159 },
   { name: 'Himalaya', image: '/images/himalaya.jpg', price: 159 },
-  { name: 'Impatiens', image: '/images/impatiens.jpg', price: 159 },
+  { name: 'Impatiens', image: '/images/customize/impatiens.jpg', price: 159 },
   { name: 'Inrami', image: '/images/inrami.jpg', price: 159 },
-  { name: 'Ishnobush', image: '/images/ishnobush.jpg', price: 159 },
+  { name: 'Ishnobush', image: '/images/customize/snowbush.jpeg', price: 159 },
   { name: 'Jason', image: '/images/Jason (2).jpg', price: 159 },
   { name: 'Jatropha', image: '/images/jetropa.jpg', price: 159 },
   { name: 'Khopia', image: '/images/khopia.jpg', price: 159 },
   { name: 'Mint', image: '/images/mint.jpg', price: 159 },
   { name: 'Nimonia', image: '/images/Nimonia.jpg', price: 159 },
-  { name: 'Syngonium', image: '/images/syngonium.jpg', price: 159 },
+  { name: 'Syngonium', image: '/images/customize/syngoniumm.jpg', price: 159 },
   { name: 'Ujjainia Ficus', image: '/images/Ujjainia Ficus.jpg', price: 159 }
 ];
 
@@ -179,12 +178,22 @@ export default function CustomizePage() {
         <div className="mb-10 custom-section">
           <h2 className="text-2xl font-bold text-green-800 mb-2 text-center">Write Your Message</h2>
           <textarea
-            rows={3}
-            className="w-full border border-green-300 rounded p-2"
-            placeholder="Your message here (optional)"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
+  rows={3}
+  className="w-full border border-green-300 rounded p-2"
+  placeholder="Your message here (optional, up to 30 words)"
+  value={message}
+  onChange={(e) => {
+    const words = e.target.value.trim().split(/\s+/);
+    if (words.length <= 30) {
+      setMessage(e.target.value);
+    }
+  }}
+/>
+
+<p className="text-sm text-green-700 mt-1 text-right">
+  {message.trim() === "" ? 0 : message.trim().split(/\s+/).length}/30 words
+</p>
+
         </div>
 
         {/* Summary */}
