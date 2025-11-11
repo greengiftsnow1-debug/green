@@ -45,8 +45,9 @@ const pots = [
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Eco Wrap", image: "/images/customize/packaging1.jpeg", price: 49 },
+  { name: "Gift Bag", image: "/images/customize/packaging1.jpeg", price: 49 },
   { name: "Gift Bag", image: "/images/customize/packaging2.jpg", price: 69 },
+  { name: "Gift Bag", image: "/images/customize/packging3.png", price: 69 },
 ];
 
 // 💌 Cards
