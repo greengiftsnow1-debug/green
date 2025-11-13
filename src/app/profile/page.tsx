@@ -10,22 +10,19 @@ export default function ProfilePage() {
   const [payments, setPayments] = useState<any[]>([]);
 
   useEffect(() => {
-    if (!user) return;
+  if (!user) return;
 
-    // Fetch orders
-    supabase
-      .from('orders')
-      .select('*')
-      .eq('user_id', user.id)
-      .then(({ data }) => setOrders(data ?? []));
+  supabase
+    .from('orders')
+    .select('*')
+    .eq('user_id', user.id)
+    .order('created_at', { ascending: false })
+    .then(({ data, error }) => {
+      if (error) console.error('Order fetch error:', error);
+      else setOrders(data ?? []);
+    });
+}, [user]);
 
-    // Fetch payments
-    supabase
-      .from('payments')
-      .select('*')
-      .eq('user_id', user.id)
-      .then(({ data }) => setPayments(data ?? []));
-  }, [user]);
 
   if (!user || !profile) return <p>Loading...</p>;
 

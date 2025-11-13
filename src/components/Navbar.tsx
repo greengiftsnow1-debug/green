@@ -141,12 +141,7 @@ export default function Navbar() {
                   <Link href="/orders" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Orders</Link>
                   <Link href="/payments" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Payment History</Link>
                    <Link href="/logout" className="block px-4 py-2 hover:bg-red-100">Logout</Link>
-                  <button
-                    onClick={handleLogout}
-                    className="w-full text-left px-4 py-2 hover:bg-red-50 text-red-600"
-                  >
-                    Logout
-                  </button>
+                  
                 </div>
               )}
             </div>

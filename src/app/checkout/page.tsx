@@ -84,7 +84,7 @@ export default function CheckoutPage() {
           console.log('Payment ID:', response.razorpay_payment_id);
 
           // 3️⃣ Save order in your Supabase
-          const res = await fetch('/api/order', {
+          const res = await fetch('/api/order/route', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 // 🌿 Plant Options
 const plants = [
   
-  { name: 'Spider Plant', image: '/images/customize/Spider.jpg', price: 249 },
+  { name: 'Spider Plant', image: '/images/customize/Spider.jpg', price: 10 },
   { name: 'Peace Lily', image: '/images/customize/Peace Lily.jpg', price: 229 },
   { name: 'Jade Plant', image: '/images/customize/plant4.jpg', price: 189 },
   { name: 'Aloe Vera', image: '/images/customize/Aloe Vera.jpg', price: 159 },
@@ -35,7 +35,7 @@ const plants = [
 
 // 🪴 Pots
 const pots = [
-  { name: 'Arty Pot', image: '/images/pot1 (1).jpeg', price: 61 },
+  { name: 'Arty Pot', image: '/images/pot1 (1).jpeg', price: 11 },
   { name: 'Valencia', image: '/images/pot1 (3).jpeg', price: 38 },
   { name: 'Ibiza Eco Maroon', image: '/images/pot1 (7).jpeg', price: 44 },
   { name: 'Million Pot', image: '/images/pot1 (14).jpeg', price: 40 },
@@ -45,14 +45,14 @@ const pots = [
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Gift Bag", image: "/images/customize/packaging1.jpeg", price: 49 },
-  { name: "Gift Bag", image: "/images/customize/packaging2.jpg", price: 69 },
-  { name: "Gift Bag", image: "/images/customize/packging3.png", price: 69 },
+  { name: "Gift Bag1", image: "/images/customize/packaging1.jpeg", price: 10 },
+  { name: "Gift Bag2", image: "/images/customize/packaging2.jpg", price: 69 },
+  { name: "Gift Bag3", image: "/images/customize/packging3.png", price: 69 },
 ];
 
 // 💌 Cards
 const cards = [
-  { name: 'Birthday Card', image: '/images/customize/card1.jpg', price: 29 },
+  { name: 'Birthday Card', image: '/images/customize/card1.jpg', price: 10 },
   { name: 'Thank You Card', image: '/images/customize/card2.jpg', price: 29 },
   { name: 'Congratulations Card', image: '/images/customize/card3.jpg', price: 29 },
   { name: 'Love Card', image: '/images/customize/card4.jpg', price: 29 },
@@ -62,13 +62,13 @@ const cards = [
 
 // 🌱 Plant Care
 const plantCare = [
-  { name: "Vermi Compost", image: "/images/plantcare1.png", price: 300 },
+  { name: "Vermi Compost", image: "/images/plantcare1.png", price: 10 },
   { name: "Cocopit", image: "/images/plantcare2.png", price: 300 },
 ];
 
 // 🏡 Home Décor
 const homeDecor = [
-  { name: "Mini Buddha Statue", image: "/images/decor1.jpg", price: 450 },
+  { name: "Mini Buddha Statue", image: "/images/decor1.jpg", price: 10 },
   { name: "Table Décor Piece", image: "/images/decor2.jpg", price: 450 },
   { name: "Table Décor Piece 2", image: "/images/decor3.jpg", price: 450 },
 ];
