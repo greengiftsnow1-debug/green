@@ -10,27 +10,28 @@ gsap.registerPlugin(ScrollTrigger);
 // 🌿 Plant Options
 const plants = [
   
-  { name: 'Spider Plant', image: '/images/customize/Spider.jpg', price: 10 },
-  { name: 'Peace Lily', image: '/images/customize/Peace Lily.jpg', price: 229 },
-  { name: 'Jade Plant', image: '/images/customize/plant4.jpg', price: 189 },
-  { name: 'Aloe Vera', image: '/images/customize/Aloe Vera.jpg', price: 159 },
-  { name: 'Ajwain', image: '/images/customize/Ajwain.jpg', price: 159 },
-  { name: 'Aralia', image: '/images/Arelia.jpg', price: 159 },
-  { name: 'Begonia', image: '/images/Bigonia.jpg', price: 159 },
-  { name: 'Eclipta', image: '/images/eclipa.jpg', price: 159 },
-  { name: 'Erison', image: '/images/Erison.jpg', price: 159 },
-  { name: 'Ficus', image: '/images/ficus.jpg', price: 159 },
-  { name: 'Himalaya', image: '/images/himalaya.jpg', price: 159 },
-  { name: 'Impatiens', image: '/images/customize/impatiens.jpg', price: 159 },
-  { name: 'Inrami', image: '/images/inrami.jpg', price: 159 },
-  { name: 'Ishnobush', image: '/images/customize/snowbush.jpeg', price: 159 },
-  { name: 'Jason', image: '/images/Jason (2).jpg', price: 159 },
-  { name: 'Jatropha', image: '/images/jetropa.jpg', price: 159 },
-  { name: 'Khopia', image: '/images/khopia.jpg', price: 159 },
-  { name: 'Mint', image: '/images/mint.jpg', price: 159 },
-  { name: 'Nimonia', image: '/images/Nimonia.jpg', price: 159 },
-  { name: 'Syngonium', image: '/images/customize/syngoniumm.jpg', price: 159 },
-  { name: 'Ujjainia Ficus', image: '/images/Ujjainia Ficus.jpg', price: 159 }
+  { name: 'Spider Plant', image: '/images/customize/Spider.jpg', price: 50 },
+  { name: 'Peace Lily', image: '/images/customize/Peace Lily.jpg', price: 400 },
+  { name: 'Jade Plant', image: '/images/customize/plant4.jpg', price: 50 },
+  { name: 'Aloe Vera', image: '/images/customize/Aloe Vera.jpg', price: 70 },
+  { name: 'Ajwain', image: '/images/customize/Ajwain.jpg', price: 50 },
+  { name: 'Aralia', image: '/images/customize/Aralia.jpg', price: 60 },
+  { name: 'Begonia', image: '/images/Begonia_Red_Plant.webp', price: 40 },
+  { name: 'lakshmikamal', image: '/images/lakshmikamal.jpg', price: 300 },
+  { name: 'Lucky Bamboo', image: '/images/lucky bamboo.jpg', price: 300 },
+ 
+ 
+  { name: 'cuphea', image: '/images/cuphea.jpg', price: 20},
+  { name: 'Impatiens', image: '/images/customize/impatiens.jpg', price:  40},
+  { name: 'anarmi-boll', image: '/images/anarmi-boll.jpg', price: 20 },
+  { name: 'Ishnobush', image: '/images/customize/snowbush.jpeg', price: 40 },
+  { name: 'Jason', image: '/images/Jason (2).jpg', price: 40 },
+  { name: 'Jatropha', image: '/images/jatropha.webp', price: 40 },
+  { name: 'coleus', image: '/images/coleus.jpg', price: 40},
+  { name: 'Mint', image: '/images/Mint.jpg', price: 40 },
+
+  { name: 'Syngonium', image: '/images/customize/syngoniumm.jpg', price: 80 },
+ 
 ];
 
 // 🪴 Pots
@@ -53,11 +54,15 @@ const packaging = [
 // 💌 Cards
 const cards = [
   { name: 'Birthday Card', image: '/images/customize/card1.jpg', price: 10 },
-  { name: 'Thank You Card', image: '/images/customize/card2.jpg', price: 29 },
-  { name: 'Congratulations Card', image: '/images/customize/card3.jpg', price: 29 },
-  { name: 'Love Card', image: '/images/customize/card4.jpg', price: 29 },
-  { name: 'Best Wishes Card', image: '/images/customize/card5.jpg', price: 29 },
-  { name: 'Custom Message Card', image: '/images/customize/card6.jpg', price: 49 },
+  { name: 'Anniversary Card', image: '/images/customize/card2.jpg', price: 29 },
+  { name: 'Birthday Card', image: '/images/customize/card3.jpg', price: 29 },
+  { name: 'Birthday Card', image: '/images/customize/card4.jpg', price: 29 },
+  { name: 'Valentine Day Card', image: '/images/customize/card5.jpg', price: 29 },
+  { name: 'Valentine Day Card', image: '/images/customize/card6.jpg', price: 49 },
+  { name: 'Thankyou Card', image: '/images/customize/card7.jpg', price: 49 },
+  { name: 'Thankyou Card', image: '/images/customize/card8.jpg', price: 49 },
+  { name: 'Best Wishes Card', image: '/images/customize/card9.jpg', price: 49 },
+
 ];
 
 // 🌱 Plant Care

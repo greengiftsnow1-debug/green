@@ -18,17 +18,29 @@ const mobileBanners = [
 export default function HeroSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [navHeight, setNavHeight] = useState(0);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
-  // Choose banner set based on screen width
   const banners = useMemo(
     () => (isMobile ? mobileBanners : desktopBanners),
     [isMobile]
   );
 
-  const currentBanner = useMemo(() => banners[currentIndex], [banners, currentIndex]);
+  const currentBanner = useMemo(
+    () => banners[currentIndex],
+    [banners, currentIndex]
+  );
 
-  // Detect screen size on mount & resize
+  // Detect navbar height dynamically
+  useEffect(() => {
+    const nav = document.querySelector('nav');
+    if (nav) {
+      const height = nav.getBoundingClientRect().height;
+      setNavHeight(height);
+    }
+  }, []);
+
+  // Detect screen size
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
@@ -36,7 +48,7 @@ export default function HeroSection() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Auto-slide every 5 seconds
+  // Auto slide
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % banners.length);
@@ -44,7 +56,7 @@ export default function HeroSection() {
     return () => clearInterval(interval);
   }, [banners]);
 
-  // Handle video play/pause
+  // Play/pause video
   useEffect(() => {
     if (currentBanner.type === 'video') {
       videoRef.current?.play();
@@ -55,24 +67,30 @@ export default function HeroSection() {
   }, [currentBanner]);
 
   return (
-    <div className="relative w-full h-[70vh] sm:h-[85vh] mt-20 sm:mt-24 overflow-hidden flex items-center justify-center bg-[#f5f5f5]">
-      {currentBanner.type === 'video' ? (
-        <video
-          ref={videoRef}
-          src={currentBanner.src}
-          className="w-full h-full object-cover"
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-      ) : (
-        <img
-          src={currentBanner.src}
-          alt="Hero Banner"
-          className="w-full h-full object-cover"
-        />
-      )}
-    </div>
+   <div
+  className="relative w-full overflow-hidden"
+  style={{
+    height: "calc(100vh - 80px)",  // use navbar height
+    marginTop: "80px",
+  }}
+>
+  {currentBanner.type === 'video' ? (
+    <video
+      ref={videoRef}
+      src={currentBanner.src}
+      className="w-full h-full object-cover object-center"
+      muted
+      loop
+      playsInline
+    />
+  ) : (
+    <img
+      src={currentBanner.src}
+      alt="Hero Banner"
+      className="w-full h-full object-cover object-center"
+    />
+  )}
+</div>
+
   );
 }
