@@ -46,7 +46,7 @@ const pots = [
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Gift Bag1", image: "/images/customize/packaging1.jpeg", price: 10 },
+  { name: "Gift Bag1", image: "/images/customize/packing1.jpeg", price: 10 },
   { name: "Gift Bag2", image: "/images/customize/packaging2.jpg", price: 69 },
   { name: "Gift Bag3", image: "/images/customize/packging3.png", price: 69 },
 ];
