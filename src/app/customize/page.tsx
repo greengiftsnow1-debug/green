@@ -10,57 +10,91 @@ gsap.registerPlugin(ScrollTrigger);
 // 🌿 Plant Options
 const plants = [
   
-  { name: 'Spider Plant', image: '/images/customize/Spider.jpg', price: 50 },
-  { name: 'Peace Lily', image: '/images/customize/Peace Lily.jpg', price: 400 },
-  { name: 'Jade Plant', image: '/images/customize/plant4.jpg', price: 50 },
-  { name: 'Aloe Vera', image: '/images/customize/Aloe Vera.jpg', price: 70 },
-  { name: 'Ajwain', image: '/images/customize/Ajwain.jpg', price: 50 },
-  { name: 'Aralia', image: '/images/customize/Aralia.jpg', price: 60 },
-  { name: 'Begonia', image: '/images/Begonia_Red_Plant.webp', price: 40 },
-  { name: 'lakshmikamal', image: '/images/lakshmikamal.jpg', price: 300 },
-  { name: 'Lucky Bamboo', image: '/images/lucky bamboo.jpg', price: 300 },
+  { name: 'Spider Plant', image: '/images/customize/plants/Spider.jpg', price: 50 },
+  { name: 'Peace Lily', image: '/images/customize/plants/Peace Lily.jpg', price: 400 },
+  { name: 'Jade Plant', image: '/images/customize/plants/plant4.jpg', price: 50 },
+  { name: 'Aloe Vera', image: '/images/customize/plants/Aloe Vera.jpg', price: 70 },
+  { name: 'Ajwain', image: '/images/customize/plants/Ajwain.jpg', price: 50 },
+  { name: 'Aralia', image: '/images/customize/plants/Aralia.jpg', price: 60 },
+  { name: 'Begonia', image: '/images/customize/plants/Begonia.jpeg', price: 40 },
+  { name: 'lakshmikamal', image: '/images/customize/plants/lakshmikamal.jpg', price: 300 },
+  { name: 'Lucky Bamboo', image: '/images/customize/plants/lucky bamboo.jpg', price: 300 },
  
  
-  { name: 'cuphea', image: '/images/cuphea.jpg', price: 20},
-  { name: 'Impatiens', image: '/images/customize/impatiens.jpg', price:  40},
-  { name: 'anarmi-boll', image: '/images/anarmi-boll.jpg', price: 20 },
-  { name: 'Ishnobush', image: '/images/customize/snowbush.jpeg', price: 40 },
-  { name: 'Jason', image: '/images/Jason (2).jpg', price: 40 },
-  { name: 'Jatropha', image: '/images/jatropha.webp', price: 40 },
-  { name: 'coleus', image: '/images/coleus.jpg', price: 40},
-  { name: 'Mint', image: '/images/Mint.jpg', price: 40 },
+  { name: 'cuphea', image: '/images/customize/plants/cuphea.jpg', price: 20},
+  { name: 'Impatiens', image: '/images/customize/plants/impatiens.jpg', price:  40},
+  { name: 'Nagdone', image: '/images/customize/plants/Nagdone.jpeg', price: 20 },
+  { name: 'Ishnobush', image: '/images/customize/plants/snowbush.jpeg', price: 40 },
+  { name: 'Jason', image: '/images/customize/plants/Jason (2).jpg', price: 40 },
+  { name: 'Jatropha', image: '/images/customize/plants/jatropha.webp', price: 40 },
+  { name: 'coleus', image: '/images/customize/plants/coleus.jpg', price: 40},
+  { name: 'Mint', image: '/images/customize/plants/Mint.jpg', price: 40 },
 
-  { name: 'Syngonium', image: '/images/customize/syngoniumm.jpg', price: 80 },
+  { name: 'Syngonium', image: '/images/customize/plants/syngoniumm.jpg', price: 80 },
  
 ];
 
 // 🪴 Pots
 const pots = [
-  { name: 'Arty Pot', image: '/images/pot1 (1).jpeg', price: 11 },
-  { name: 'Valencia', image: '/images/pot1 (3).jpeg', price: 38 },
-  { name: 'Ibiza Eco Maroon', image: '/images/pot1 (7).jpeg', price: 44 },
-  { name: 'Million Pot', image: '/images/pot1 (14).jpeg', price: 40 },
-  { name: 'Tancy Pot', image: '/images/IMG_6497.jpg', price: 49 },
-  { name: 'IMG_6337', image: '/images/IMG_6337.jpg', price: 80 }
+  { name: 'Arty Pot', image: '/images/pot1 (1).jpeg', price: 61 },
+   { name: 'Arty Pot', image: '/images/pot1 (2).jpeg', price: 61 },
+   { name: 'Arty Pot', image: '/images/pot1 (6).jpeg', price: 61 },
+   { name: 'Arty Pot', image: '/images/pot1 (8).jpeg', price: 61 },
+   { name: 'Arty Pot', image: '/images/pot1 (16).jpeg', price: 61 },  
+   
+   { name: 'Valencia Blue', image: '/images/pot1 (4).jpeg', price: 38}, 
+   { name: 'Valencia Green', image: '/images/pot1 (5).jpeg', price: 38},
+   
+   { name: 'Valencia Brown', image: '/images/pot1 (9).jpeg', price: 38 }, 
+       
+       { name: 'Valencia Yellow', image: '/images/pot1 (11).jpeg', price: 38}, 
+        { name: 'Valencia White', image: '/images/IMG_6481.jpg', price: 49 }, 
+         { name: 'Valencia Red', image: '/images/IMG_6478.jpg', price: 49 }, 
+         { name: 'Valencia OffWhite', image: '/images/IMG_6471.jpg', price: 49 }, 
+         { name: 'Valencia OliveGreen', image: '/images/IMG_6467.jpg', price: 49 }, 
+         { name: 'Valencia Mahroon ', image: '/images/IMG_6462.jpg', price: 49 }, 
+           
+          
+           { name: 'Valencia Pink', image: '/images/IMG_6420.jpg', price: 49 }, 
+           { name: 'Valencia Gray', image: '/images/IMG_6416.jpg', price: 49 }, 
+           
+           
+          
+           { name: 'Ibiza Eco Yellow ', image: '/images/Ibiza Eco Yellow.jpeg', price: 44 }, 
+            { name: 'Ibiza Eco Blue ', image: '/images/Ibiza Eco Blue.jpeg', price: 44 }, 
+             { name: 'Ibiza Eco White ', image: '/images/Ibiza Eco White.jpeg', price: 44 }, 
+              { name: 'Ibiza Eco Purple ', image: '/images/Ibiza Eco Purple.jpeg', price: 44 }, 
+   { name: 'Ibiza Eco Maroon ', image: '/images/pot1 (7).jpeg', price: 44 },
+       { name: 'Ibiza Eco Green', image: '/images/pot1 (12).jpeg', price: 44 }, 
+       { name: 'Ibiza Eco Brown', image: '/images/pot1 (17).jpeg', price: 44 }, 
+       
+        { name: 'Million Pot', image: '/images/pot1 (14).jpeg', price: 40},
+          
+         { name: 'Tancy Pot', image: '/images/IMG_6497.jpg', price: 49 }, 
+         { name: 'Tancy Pot', image: '/images/IMG_6492.jpg', price: 85 }, 
+         { name: 'Tancy Pot', image: '/images/IMG_6490.jpg', price: 49 }, 
+         { name: 'Tancy Pot', image: '/images/IMG_6487.jpg', price: 49 }, 
+        
 ];
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Gift Bag1", image: "/images/customize/packing1.jpeg", price: 10 },
+  { name: "Gift Bag1", image: "/images/customize/packging1.jpeg", price: 10 },
   { name: "Gift Bag2", image: "/images/customize/packaging2.jpg", price: 69 },
-  { name: "Gift Bag3", image: "/images/customize/packging3.png", price: 69 },
+  { name: "Gift Bag3", image: "/images/customize/packging3.jpeg", price: 69 },
 ];
 
 // 💌 Cards
 const cards = [
-  { name: 'Birthday Card', image: '/images/customize/card1.jpg', price: 10 },
-  { name: 'Anniversary Card', image: '/images/customize/card2.jpg', price: 29 },
-  { name: 'Birthday Card', image: '/images/customize/card3.jpg', price: 29 },
-  { name: 'Birthday Card', image: '/images/customize/card4.jpg', price: 29 },
-  { name: 'Valentine Day Card', image: '/images/customize/card5.jpg', price: 29 },
-  { name: 'Valentine Day Card', image: '/images/customize/card6.jpg', price: 49 },
-  { name: 'Thankyou Card', image: '/images/customize/card7.jpg', price: 49 },
-  { name: 'Thankyou Card', image: '/images/customize/card8.jpg', price: 49 },
+  { name: 'Birthday Card1', image: '/images/customize/card1.jpg', price: 10 },
+ 
+  { name: 'Birthday Card2', image: '/images/customize/card3.jpg', price: 29 },
+  { name: 'Birthday Card3', image: '/images/customize/card4.jpg', price: 29 },
+   { name: 'Anniversary Card', image: '/images/customize/card2.jpg', price: 29 },
+  { name: 'Valentine Day Card1', image: '/images/customize/card5.jpg', price: 29 },
+  { name: 'Valentine Day Card2', image: '/images/customize/card6.jpg', price: 49 },
+  { name: 'Thankyou Card1', image: '/images/customize/card7.jpg', price: 49 },
+  { name: 'Thankyou Card2', image: '/images/customize/card8.jpg', price: 49 },
   { name: 'Best Wishes Card', image: '/images/customize/card9.jpg', price: 49 },
 
 ];
