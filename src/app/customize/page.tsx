@@ -22,13 +22,13 @@ const plants = [
  
  
   { name: 'cuphea', image: '/images/customize/plants/cuphea.jpg', price: 20},
-  { name: 'Impatiens', image: '/images/customize/plants/impatiens.jpg', price:  40},
+  
   { name: 'Nagdone', image: '/images/customize/plants/Nagdone.jpeg', price: 20 },
   { name: 'Ishnobush', image: '/images/customize/plants/snowbush.jpeg', price: 40 },
-  { name: 'Jason', image: '/images/customize/plants/Jason (2).jpg', price: 40 },
+  
   { name: 'Jatropha', image: '/images/customize/plants/jatropha.webp', price: 40 },
   { name: 'coleus', image: '/images/customize/plants/coleus.jpg', price: 40},
-  { name: 'Mint', image: '/images/customize/plants/Mint.jpg', price: 40 },
+ 
 
   { name: 'Syngonium', image: '/images/customize/plants/syngoniumm.jpg', price: 80 },
  
@@ -48,40 +48,40 @@ const pots = [
    { name: 'Valencia Brown', image: '/images/pot1 (9).jpeg', price: 38 }, 
        
        { name: 'Valencia Yellow', image: '/images/pot1 (11).jpeg', price: 38}, 
-        { name: 'Valencia White', image: '/images/IMG_6481.jpg', price: 49 }, 
-         { name: 'Valencia Red', image: '/images/IMG_6478.jpg', price: 49 }, 
-         { name: 'Valencia OffWhite', image: '/images/IMG_6471.jpg', price: 49 }, 
-         { name: 'Valencia OliveGreen', image: '/images/IMG_6467.jpg', price: 49 }, 
-         { name: 'Valencia Mahroon ', image: '/images/IMG_6462.jpg', price: 49 }, 
+        { name: 'Valencia White', image: '/images/customize/pots/Valencia White.png', price: 49 }, 
+         { name: 'Valencia Red', image: '/images/customize/pots/Valencia Red.png', price: 49 }, 
+         { name: 'Valencia OffWhite', image: '/images/customize/pots/Valencia OffWhite.png', price: 49 }, 
+         { name: 'Valencia OliveGreen', image: '/images/customize/pots/Valencia OliveGreen.png', price: 49 }, 
+         { name: 'Valencia Mahroon ', image: '/images/customize/pots/Valencia Mahroon.png', price: 49 }, 
            
           
-           { name: 'Valencia Pink', image: '/images/IMG_6420.jpg', price: 49 }, 
-           { name: 'Valencia Gray', image: '/images/IMG_6416.jpg', price: 49 }, 
+           { name: 'Valencia Pink', image: '/images/customize/pots/Valencia Pink.png', price: 49 }, 
+           { name: 'Valencia Gray', image: '/images/customize/pots/Valencia Gray.png', price: 49 }, 
            
            
           
-           { name: 'Ibiza Eco Yellow ', image: '/images/Ibiza Eco Yellow.jpeg', price: 44 }, 
-            { name: 'Ibiza Eco Blue ', image: '/images/Ibiza Eco Blue.jpeg', price: 44 }, 
-             { name: 'Ibiza Eco White ', image: '/images/Ibiza Eco White.jpeg', price: 44 }, 
-              { name: 'Ibiza Eco Purple ', image: '/images/Ibiza Eco Purple.jpeg', price: 44 }, 
-   { name: 'Ibiza Eco Maroon ', image: '/images/pot1 (7).jpeg', price: 44 },
-       { name: 'Ibiza Eco Green', image: '/images/pot1 (12).jpeg', price: 44 }, 
-       { name: 'Ibiza Eco Brown', image: '/images/pot1 (17).jpeg', price: 44 }, 
+           { name: 'Ibiza Eco Yellow ', image: '/images/customize/pots/Ibiza Eco Yellow.jpeg', price: 44 }, 
+            { name: 'Ibiza Eco Blue ', image: '/images/customize/pots/Ibiza Eco Blue.jpeg', price: 44 }, 
+             { name: 'Ibiza Eco White ', image: '/images/customize/pots/Ibiza Eco White.jpeg', price: 44 }, 
+              { name: 'Ibiza Eco Purple ', image: '/images/customize/pots/Ibiza Eco Purple.jpeg', price: 44 }, 
+   { name: 'Ibiza Eco Maroon ', image: '/images/customize/pots/pot1 (7).jpeg', price: 44 },
+       { name: 'Ibiza Eco Green', image: '/images/customize/pots/pot1 (12).jpeg', price: 44 }, 
+       { name: 'Ibiza Eco Brown', image: '/images/customize/pots/pot1 (17).jpeg', price: 44 }, 
        
         { name: 'Million Pot', image: '/images/pot1 (14).jpeg', price: 40},
           
-         { name: 'Tancy Pot', image: '/images/IMG_6497.jpg', price: 49 }, 
-         { name: 'Tancy Pot', image: '/images/IMG_6492.jpg', price: 85 }, 
-         { name: 'Tancy Pot', image: '/images/IMG_6490.jpg', price: 49 }, 
-         { name: 'Tancy Pot', image: '/images/IMG_6487.jpg', price: 49 }, 
+         { name: 'Tancy Pot', image: '/images/customize/pots/tancy1.png', price: 49 }, 
+         { name: 'Tancy Pot', image: '/images/customize/pots/tancy2.png', price: 85 }, 
+         { name: 'Tancy Pot', image: '/images/customize/pots/tancy3.png', price: 49 }, 
+         { name: 'Tancy Pot', image: '/images/customize/pots/tancy4.png', price: 49 }, 
         
 ];
 
 // 🎁 Packaging
 const packaging = [
   { name: "Gift Bag1", image: "/images/customize/packging1.jpeg", price: 10 },
-  { name: "Gift Bag2", image: "/images/customize/packaging2.jpg", price: 69 },
-  { name: "Gift Bag3", image: "/images/customize/packging3.jpeg", price: 69 },
+  { name: "Gift Bag2", image: "/images/customize/pack2.png", price: 69 },
+  { name: "Gift Bag3", image: "/images/customize/pack3.png", price: 69 },
 ];
 
 // 💌 Cards
@@ -182,12 +182,13 @@ export default function CustomizePage() {
             }`}
           >
             <Image
-              src={item.image}
-              alt={item.name}
-              width={160}
-              height={160}
-              className="rounded-xl mb-2 object-cover w-full h-36"
-            />
+  src={item.image}
+  alt={item.name}
+  width={140}
+  height={140}
+ className="rounded-xl mb-2 object-contain w-full max-h-[170px] bg-white"
+/>
+
             <p className="text-center text-base font-semibold text-green-900">
               {item.name}
             </p>

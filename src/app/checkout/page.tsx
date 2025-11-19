@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
+import { createClient } from '@supabase/supabase-js';
 
 export default function CheckoutPage() {
   const [customGift, setCustomGift] = useState<any>(null);
