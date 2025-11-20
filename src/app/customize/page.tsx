@@ -50,8 +50,8 @@ const pots = [
        { name: 'Valencia Yellow', image: '/images/pot1 (11).jpeg', price: 38}, 
         { name: 'Valencia White', image: '/images/customize/pots/Valencia White.png', price: 49 }, 
          { name: 'Valencia Red', image: '/images/customize/pots/Valencia Red.png', price: 49 }, 
-         { name: 'Valencia OffWhite', image: '/images/customize/pots/Valencia OffWhite.png', price: 49 }, 
-         { name: 'Valencia OliveGreen', image: '/images/customize/pots/Valencia OliveGreen.png', price: 49 }, 
+         { name: 'Valencia OffWhite', image: '/images/customize/pots/Valencia Offwhite.png', price: 49 }, 
+         { name: 'Valencia OliveGreen', image: '/images/customize/pots/Valencia Olivegreen.png', price: 49 }, 
          { name: 'Valencia Mahroon ', image: '/images/customize/pots/Valencia Mahroon.png', price: 49 }, 
            
           
