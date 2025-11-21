@@ -107,9 +107,11 @@ const plantCare = [
 
 // 🏡 Home Décor
 const homeDecor = [
-  { name: "Mini Buddha Statue", image: "/images/decor1.jpg", price: 10 },
-  { name: "Table Décor Piece", image: "/images/decor2.jpg", price: 450 },
-  { name: "Table Décor Piece 2", image: "/images/decor3.jpg", price: 450 },
+  { name: "Bird Nest Grass", image: "/images/decor1.png", price: 10 },
+  { name: "Bird Home1", image: "/images/decor2.png", price: 450 },
+  { name: "Bird Home2", image: "/images/decor3.png", price: 450 },
+   { name: "Artificial ", image: "/images/decor4.png", price: 450 },
+    { name: "Stones", image: "/images/decor5.png", price: 450 },
 ];
 
 export default function CustomizePage() {
