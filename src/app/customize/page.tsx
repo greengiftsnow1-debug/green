@@ -13,21 +13,21 @@ const plants = [
   { name: 'Spider Plant', image: '/images/customize/plants/Spider.jpg', price: 50 },
   { name: 'Peace Lily', image: '/images/customize/plants/Peace Lily.jpg', price: 400 },
   { name: 'Jade Plant', image: '/images/customize/plants/plant4.jpg', price: 50 },
-  { name: 'Aloe Vera', image: '/images/customize/plants/Aloe Vera.jpg', price: 70 },
+  { name: 'Aloe Vera', image: '/images/customize/plants/Aloe Vera.jpg', price: 50 },
   { name: 'Ajwain', image: '/images/customize/plants/Ajwain.jpg', price: 50 },
-  { name: 'Aralia', image: '/images/customize/plants/Aralia.jpg', price: 60 },
-  { name: 'Begonia', image: '/images/customize/plants/Begonia.jpeg', price: 40 },
+  { name: 'Aralia', image: '/images/customize/plants/Aralia.jpg', price: 50 },
+  { name: 'Begonia', image: '/images/customize/plants/Begonia.jpeg', price: 50 },
   { name: 'lakshmikamal', image: '/images/customize/plants/lakshmikamal.jpg', price: 300 },
   { name: 'Lucky Bamboo', image: '/images/customize/plants/lucky bamboo.jpg', price: 300 },
  
  
-  { name: 'cuphea', image: '/images/customize/plants/cuphea.jpg', price: 20},
+  { name: 'cuphea', image: '/images/customize/plants/cuphea.jpg', price: 50},
   
-  { name: 'Nagdone', image: '/images/customize/plants/Nagdone.jpeg', price: 20 },
-  { name: 'Ishnobush', image: '/images/customize/plants/snowbush.jpeg', price: 40 },
+  { name: 'Nagdone', image: '/images/customize/plants/Nagdone.jpeg', price: 50 },
+  { name: 'Ishnobush', image: '/images/customize/plants/snowbush.jpeg', price: 50 },
   
-  { name: 'Jatropha', image: '/images/customize/plants/jatropha.webp', price: 40 },
-  { name: 'coleus', image: '/images/customize/plants/coleus.jpg', price: 40},
+  { name: 'Jatropha', image: '/images/customize/plants/jatropha.webp', price: 50 },
+  { name: 'coleus', image: '/images/customize/plants/coleus.jpg', price: 50},
  
 
   { name: 'Syngonium', image: '/images/customize/plants/syngoniumm.jpg', price: 80 },
@@ -36,11 +36,11 @@ const plants = [
 
 // 🪴 Pots
 const pots = [
-  { name: 'Arty Pot', image: '/images/pot1 (1).jpeg', price: 61 },
-   { name: 'Arty Pot', image: '/images/pot1 (2).jpeg', price: 61 },
-   { name: 'Arty Pot', image: '/images/pot1 (6).jpeg', price: 61 },
-   { name: 'Arty Pot', image: '/images/pot1 (8).jpeg', price: 61 },
-   { name: 'Arty Pot', image: '/images/pot1 (16).jpeg', price: 61 },  
+  { name: 'Arty Pot1', image: '/images/pot1 (1).jpeg', price: 61 },
+   { name: 'Arty Pot2', image: '/images/pot1 (2).jpeg', price: 61 },
+   { name: 'Arty Pot3', image: '/images/pot1 (6).jpeg', price: 61 },
+   { name: 'Arty Pot4', image: '/images/pot1 (8).jpeg', price: 61 },
+   { name: 'Arty Pot5', image: '/images/pot1 (16).jpeg', price: 61 },  
    
    { name: 'Valencia Blue', image: '/images/pot1 (4).jpeg', price: 38}, 
    { name: 'Valencia Green', image: '/images/pot1 (5).jpeg', price: 38},
@@ -70,48 +70,48 @@ const pots = [
        
         { name: 'Million Pot', image: '/images/pot1 (14).jpeg', price: 40},
           
-         { name: 'Tancy Pot', image: '/images/customize/pots/tancy1.png', price: 49 }, 
-         { name: 'Tancy Pot', image: '/images/customize/pots/tancy2.png', price: 85 }, 
-         { name: 'Tancy Pot', image: '/images/customize/pots/tancy3.png', price: 49 }, 
-         { name: 'Tancy Pot', image: '/images/customize/pots/tancy4.png', price: 49 }, 
+         { name: 'Tancy Pot1', image: '/images/customize/pots/tancy1.png', price: 49 }, 
+         { name: 'Tancy Pot2', image: '/images/customize/pots/tancy2.png', price: 49 }, 
+         { name: 'Tancy Pot3', image: '/images/customize/pots/tancy3.png', price: 49 }, 
+         { name: 'Tancy Pot4', image: '/images/customize/pots/tancy4.png', price: 49 }, 
         
 ];
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Gift Bag1", image: "/images/customize/packging1.jpeg", price: 10 },
-  { name: "Gift Bag2", image: "/images/customize/pack2.png", price: 69 },
-  { name: "Gift Bag3", image: "/images/customize/pack3.png", price: 69 },
+  { name: "Gift Bag1", image: "/images/customize/packging1.jpeg", price: 60 },
+  { name: "Gift Bag2", image: "/images/customize/pack2.png", price: 50},
+  { name: "Gift Bag3", image: "/images/customize/pack3.png", price: 50 },
 ];
 
 // 💌 Cards
 const cards = [
-  { name: 'Birthday Card1', image: '/images/customize/card1.jpg', price: 10 },
+  { name: 'Birthday Card1', image: '/images/customize/card1.jpg', price:20 },
  
-  { name: 'Birthday Card2', image: '/images/customize/card3.jpg', price: 29 },
-  { name: 'Birthday Card3', image: '/images/customize/card4.jpg', price: 29 },
-   { name: 'Anniversary Card', image: '/images/customize/card2.jpg', price: 29 },
-  { name: 'Valentine Day Card1', image: '/images/customize/card5.jpg', price: 29 },
-  { name: 'Valentine Day Card2', image: '/images/customize/card6.jpg', price: 49 },
-  { name: 'Thankyou Card1', image: '/images/customize/card7.jpg', price: 49 },
-  { name: 'Thankyou Card2', image: '/images/customize/card8.jpg', price: 49 },
-  { name: 'Best Wishes Card', image: '/images/customize/card9.jpg', price: 49 },
+  { name: 'Birthday Card2', image: '/images/customize/card3.jpg', price: 20 },
+  { name: 'Birthday Card3', image: '/images/customize/card4.jpg', price: 20 },
+   { name: 'Anniversary Card', image: '/images/customize/card2.jpg', price: 20 },
+  { name: 'Valentine Day Card1', image: '/images/customize/card5.jpg', price: 20 },
+  { name: 'Valentine Day Card2', image: '/images/customize/card6.jpg', price: 20},
+  { name: 'Thankyou Card1', image: '/images/customize/card7.jpg', price: 20 },
+  { name: 'Thankyou Card2', image: '/images/customize/card8.jpg', price: 20},
+  { name: 'Best Wishes Card', image: '/images/customize/card9.jpg', price: 20 },
 
 ];
 
 // 🌱 Plant Care
 const plantCare = [
-  { name: "Vermi Compost", image: "/images/plantcare1.png", price: 10 },
-  { name: "Cocopit", image: "/images/plantcare2.png", price: 300 },
+  { name: "Vermi Compost", image: "/images/plantcare1.png", price: 50 },
+  { name: "Cocopit", image: "/images/plantcare2.png", price: 50 },
 ];
 
 // 🏡 Home Décor
 const homeDecor = [
-  { name: "Bird Nest Grass", image: "/images/decor1.png", price: 10 },
-  { name: "Bird Home1", image: "/images/decor2.png", price: 450 },
+  { name: "Bird Nest Grass", image: "/images/decor1.png", price: 120 },
+  { name: "Bird Home1", image: "/images/decor2.png", price: 250 },
   { name: "Bird Home2", image: "/images/decor3.png", price: 450 },
-   { name: "Artificial ", image: "/images/decor4.png", price: 450 },
-    { name: "Stones", image: "/images/decor5.png", price: 450 },
+   { name: "Artificial ", image: "/images/decor4.png", price: 400 },
+    { name: "Stones", image: "/images/decor5.png", price: 100 },
 ];
 
 export default function CustomizePage() {

@@ -38,9 +38,9 @@ export default async function OrdersPage() {
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold text-green-900 mb-6">Orders</h1>
 
-        <div className="overflow-x-auto rounded-2xl bg-white/60 backdrop-blur-md shadow">
+        <div className="overflow-x-auto rounded-2xl bg-black/60 ">
           <table className="min-w-full text-sm">
-            <thead className="text-left bg-white/70">
+            <thead className="text-left bg-black/70">
               <tr>
                 <th className="p-3">Order ID</th>
                 <th className="p-3">Customer</th>
