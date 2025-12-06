@@ -1,5 +1,6 @@
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
 const AuthContext = createContext<any>(null);
@@ -9,68 +10,77 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch session on load
+  // 🔄 Listen for login/logout
   useEffect(() => {
-    const getSession = async () => {
-      const { data } = await supabase.auth.getSession();
-      const session = data.session;
-
-      if (session) {
-        setUser(session.user);
-        fetchProfile(session.user.id);
-      }
-
-      setLoading(false);
-    };
-
-    getSession();
-
-    // Auth listener
-    const { data: listener } = supabase.auth.onAuthStateChange(
+    const { data: authListener } = supabase.auth.onAuthStateChange(
       async (_event, session) => {
-        setUser(session?.user ?? null);
+        const activeUser = session?.user || null;
+        setUser(activeUser);
 
-        if (session?.user) {
-          fetchProfile(session.user.id);
+        if (activeUser) {
+          await fetchProfile(activeUser.id);
         } else {
           setProfile(null);
         }
       }
     );
 
-    return () => listener.subscription.unsubscribe();
+    supabase.auth.getSession().then(async ({ data }) => {
+      const activeUser = data.session?.user || null;
+      setUser(activeUser);
+
+      if (activeUser) await fetchProfile(activeUser.id);
+
+      setLoading(false);
+    });
+
+    return () => {
+      authListener.subscription.unsubscribe();
+    };
   }, []);
 
-  const fetchProfile = async (user_id: string) => {
-    const { data } = await supabase
-      .from("profile")
+  // 🔍 Fetch user profile safely
+  const fetchProfile = async (userId: string) => {
+    const { data, error } = await supabase
+      .from("profiles")
       .select("*")
-      .eq("user_id", user_id)
-      .single();
+      .eq("id", userId)
+      .maybeSingle();     // ← FIX: prevents PGRST116
 
-    setProfile(data || null);
+    if (error) {
+      console.error("Profile fetch error:", error);
+      return;
+    }
+
+    setProfile(data);
   };
 
-  const signup = async (email: string, password: string, name: string, mobile: string) => {
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-    });
+  // 🆕 SIGNUP
+  const signup = async (
+    email: string,
+    password: string,
+    name: string,
+    mobile: string
+  ) => {
+    const { data, error } = await supabase.auth.signUp({ email, password });
 
     if (error) throw error;
 
     if (data.user) {
-      await supabase.from("profile").insert({
-        user_id: data.user.id,
+      await supabase.from("profiles").insert({
+        id: data.user.id,
         email,
         name,
         mobile,
       });
+
+      await fetchProfile(data.user.id);
     }
 
-    return data;
+    return data.user;
   };
 
+  // 🔐 LOGIN
   const login = async (email: string, password: string) => {
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
@@ -78,20 +88,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     if (error) throw error;
-    return data;
+
+    if (data.user) await fetchProfile(data.user.id);
+
+    return data.user;
   };
 
+  // 🚪 LOGOUT (Fully working)
   const logout = async () => {
     await supabase.auth.signOut();
+    setUser(null);
+    setProfile(null);
+
+    window.location.href = "/login"; // ← BEST way in Next.js
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, login, signup, logout, loading }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        profile,
+        loading,
+        signup,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 }
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
+export const useAuth = () => useContext(AuthContext);

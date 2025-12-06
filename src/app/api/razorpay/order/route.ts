@@ -6,8 +6,8 @@ export async function POST(req: Request) {
     const { amount } = await req.json();
 
     const instance = new Razorpay({
-      key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-      key_secret: process.env.RAZORPAY_KEY_SECRET!,
+      key_id: "rzp_live_RlUUv8gSNgd5tR",
+      key_secret: "FYiWSNwaROglO0vuBmfjlLfY",
     });
 
     const options = {

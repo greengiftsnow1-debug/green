@@ -122,38 +122,38 @@ export default function CheckoutPage() {
         throw new Error("Failed to create Razorpay order");
       }
 
-      // 2️⃣ Razorpay options
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-        amount: total * 100,
-        currency: "INR",
-        name: "Green Gift",
-        description: "Custom Plant Gift",
-        order_id: orderData.orderId,
-        prefill: {
-          name,
-          email: profile?.email,
-          contact: phone,
-        },
-        theme: { color: "#16a34a" },
+  key: "rzp_live_RlUUv8gSNgd5tR",
+  amount: total * 100,
+  currency: "INR",
+  name: "Green Gift",
+  description: "Custom Plant Gift",
+  order_id: orderData.orderId,
+  prefill: {
+    name,
+    email: profile?.email,
+    contact: phone,
+  },
+  theme: { color: "#16a34a" },
         handler: async (response: any) => {
           // 3️⃣ Save order in Supabase through API
-          const saveRes = await fetch("/api/order/route", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              user_id: user.id,
-              customer_name: name,
-              customer_phone: phone,
-              customer_address: address,
-              customer_pincode: pincode,
-              store_pin: storePin,
-              cart_items: customGift,
-              delivery_charge: deliveryCharge,
-              total_amount: total,
-              payment_id: response.razorpay_payment_id,
-            }),
-          });
+         const saveRes = await fetch("/api/order", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    name,                   // changed
+    phone,                  // changed
+    email: profile?.email,  // changed
+    address,
+    pincode,
+    store_pin: storePin,
+    cart_items: customGift,
+    delivery_charge: deliveryCharge,
+    total_amount: total,
+    payment_id: response.razorpay_payment_id,
+  }),
+});
+
 
           const saveJson = await saveRes.json();
           if (!saveJson.success) {

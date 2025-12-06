@@ -18,7 +18,7 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
-      router.push("/checkout");
+      router.push("/profile");
     } catch (err: any) {
       setError(err.message);
     }

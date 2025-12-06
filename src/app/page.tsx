@@ -17,7 +17,7 @@ import CustomizePage from "./customize/page";
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
-      <Navbar />
+      
       <Hero />
       <CustomizePage/>
      
@@ -34,7 +34,7 @@ export default function Home() {
 
       <ScrollIndicator />
 
-      <Footer />
+      
     </main>
   );
 }

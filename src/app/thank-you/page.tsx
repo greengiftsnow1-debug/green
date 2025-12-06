@@ -1,67 +1,70 @@
-'use client';
+"use client";
 
-import { Suspense, useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
+import Link from "next/link";
 
-function ThankYouContent() {
-  const searchParams = useSearchParams();
-  const orderId = searchParams.get("orderId");
+export default function ThankYouPage() {
+  const orderId = useSearchParams().get("orderId");
+  const router = useRouter();
 
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchOrder() {
-      if (!orderId) return;
+    if (!orderId) return;
 
+    const loadOrder = async () => {
       const { data, error } = await supabase
         .from("orders")
         .select("*")
         .eq("id", orderId)
         .single();
 
-      if (error) {
-        console.error("Error fetching order:", error);
-      } else {
-        setOrder(data);
-      }
+      if (!error) setOrder(data);
       setLoading(false);
-    }
+    };
 
-    fetchOrder();
+    loadOrder();
   }, [orderId]);
 
-  if (loading) {
-    return <p className="p-6 text-lg">Loading your order...</p>;
-  }
-
-  if (!order) {
-    return <p className="p-6 text-lg text-red-600">Order not found!</p>;
-  }
+  if (loading) return <p className="text-center pt-32 text-white">Loading...</p>;
+  if (!order) return <p className="text-center pt-32 text-red-300">Order Not Found</p>;
 
   return (
-    <div className="p-6 max-w-xl mx-auto text-center">
-      <h1 className="text-2xl font-bold text-green-600">🎉 Thank You!</h1>
-      <p className="mt-2">Your order has been placed successfully.</p>
+    <div className="min-h-screen flex justify-center items-center p-6 text-white 
+    bg-cover bg-center" style={{backgroundImage: "url('/images/bg-profile.jpeg')"}}>
 
-      <div className="mt-6 border p-4 rounded-lg shadow-md text-left">
-        <h2 className="text-lg font-semibold">Order Details</h2>
-        <p><strong>Order ID:</strong> {order.id}</p>
-        <p><strong>Name:</strong> {order.customer_name}</p>
-        <p><strong>Phone:</strong> {order.customer_phone}</p>
-        <p><strong>Address:</strong> {order.customer_address}</p>
-        <p><strong>Total:</strong> ₹{order.total_amount}</p>
-        <p><strong>Status:</strong> {order.status}</p>
+      <div className="bg-white/10 backdrop-blur-xl p-10 rounded-3xl max-w-xl w-full 
+      border border-white/20 shadow-2xl text-center">
+
+        <h1 className="text-4xl font-bold text-green-300">🎉 Thank You!</h1>
+        <p className="mt-2 text-white/80 text-lg">Your Order is Confirmed</p>
+
+        <div className="mt-6 bg-white/10 p-5 rounded-xl border border-white/20 text-left">
+          <p><b>Order ID:</b> {order.id}</p>
+          <p><b>Amount Paid:</b> ₹{order.total_amount}</p>
+          <p><b>Payment ID:</b> {order.payment_id}</p>
+          <p><b>Status:</b> {order.status}</p>
+          <p><b>Delivery Charge:</b> ₹{order.delivery_charge}</p>
+
+          <div className="mt-3">
+            <p className="text-white/80 text-sm">{new Date(order.created_at).toLocaleString()}</p>
+          </div>
+        </div>
+
+        <Link href="/profile">
+          <button className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white 
+          font-semibold py-3 rounded-lg">
+            View My Orders 📦
+          </button>
+        </Link>
+
+        <Link href="/" className="inline-block text-green-300 mt-4 underline">
+          Continue Shopping →
+        </Link>
       </div>
     </div>
-  );
-}
-
-export default function ThankYouPage() {
-  return (
-    <Suspense fallback={<p className="p-6 text-lg">Loading your order...</p>}>
-      <ThankYouContent />
-    </Suspense>
   );
 }

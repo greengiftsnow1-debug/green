@@ -19,7 +19,7 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
-    router.push('/login');
+   window.location.href = "/login";
   };
 
   return (
@@ -57,7 +57,12 @@ export default function Navbar() {
                   <Link href="/profile" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Profile</Link>
                   <Link href="/orders" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Orders</Link>
                   <Link href="/payments" className="block px-4 py-2 hover:bg-green-50" onClick={() => setProfileOpen(false)}>Payment History</Link>
-                   <Link href="/logout" className="block px-4 py-2 hover:bg-red-100">Logout</Link>
+                   <button
+  onClick={handleLogout}
+  className="block w-full text-left px-4 py-2 hover:bg-red-100 text-red-600"
+>
+  Logout
+</button>
                   
                 </div>
               )}
