@@ -8,6 +8,9 @@ import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MouseTracker from "@/components/MouseTracker";
+import VisitCounter from '@/components/VisitCounter';
+import StickyInfoBar from "@/components/StickyInfoBar";
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -19,12 +22,10 @@ export const metadata = {
   title: "Green Gift",
   description: "Nature-inspired shopping experience",
 };
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={poppins.variable}>
       <head>
-        {/* Razorpay Checkout Script */}
         <Script
           src="https://checkout.razorpay.com/v1/checkout.js"
           strategy="beforeInteractive"
@@ -32,26 +33,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
 
       <body className="font-poppins bg-black text-white min-h-screen flex flex-col">
-
         <AuthProvider>
           <CartProvider>
-            {/* Floating cursor animation */}
+
             <MouseTracker />
 
             {/* 🌿 GLOBAL NAVBAR */}
             <Navbar />
+            <StickyInfoBar/>
 
-            {/* PAGE CONTENT */}
+            {/* ✅ SINGLE MAIN */}
             <main className="flex-grow pt-20">
               {children}
             </main>
 
+
+<VisitCounter />
             {/* 🌱 GLOBAL FOOTER */}
             <Footer />
 
           </CartProvider>
         </AuthProvider>
-
+        
       </body>
     </html>
   );

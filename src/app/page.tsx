@@ -9,32 +9,21 @@ import Stats from '@/sections/Stats';
 import CustomerReviews from '@/sections/CustomerReviews';
 import OurClients from '@/sections/OurClients';
 import CustomizePage from "./customize/page";
-
+import InfoMarquee from '@/components/InfoMarquee';
 
 
 
 
 export default function Home() {
   return (
-    <main className="relative overflow-hidden">
-      
+    <>
       <Hero />
-      <CustomizePage/>
-     
-
-       
-
-      
-
-      
-      
+      <InfoMarquee />
+      <CustomizePage />
       <CustomerReviews />
       <OurClients />
-      <Stats/>
-
+      <Stats />
       <ScrollIndicator />
-
-      
-    </main>
+    </>
   );
 }

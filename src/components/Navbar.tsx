@@ -23,11 +23,12 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full z-50 backdrop-blur-md bg-white/70 text-green-900 shadow-md">
+    <nav className="fixed top-0 left-0 w-full h-20 z-50 backdrop-blur-md bg-white/70 shadow-md">
+
       <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="Green Gift Logo" className="h-10 w-auto" />
+          <img src="/logo.png" alt="Green Gift Logo" className="h-19 w-auto" />
         </Link>
 
         {/* Desktop Menu */}

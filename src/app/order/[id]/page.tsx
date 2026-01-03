@@ -73,6 +73,7 @@ export default function OrderDetailsPage() {
             <h2 className="text-xl font-semibold mb-2">Shipping Details</h2>
             <p><strong>Name:</strong> {order.customer_name}</p>
             <p><strong>Phone:</strong> {order.customer_phone}</p>
+            <p><strong>Email:</strong> {order.customer_email}</p>
             <p><strong>Address:</strong> {order.customer_address}</p>
             <p><strong>Pincode:</strong> {order.customer_pincode}</p>
             <p><strong>Store:</strong> {order.store_pin}</p>

@@ -7,6 +7,18 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+type Item = {
+  name: string;
+  image: string;
+  price: number;
+};
+
+type CartItem = Item & {
+  qty: number;
+  category: string;
+};
+
+
 // 🌿 Plant Options
 const plants = [
   
@@ -79,7 +91,7 @@ const pots = [
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Gift Bag1", image: "/images/customize/packging1.jpeg", price: 1 },
+  { name: "Gift Bag1", image: "/images/customize/packging1.png", price: 1 },
   { name: "Gift Bag2", image: "/images/customize/pack2.png", price: 50},
   { name: "Gift Bag3", image: "/images/customize/pack3.png", price: 50 },
 ];
@@ -113,90 +125,101 @@ const homeDecor = [
    { name: "Artificial ", image: "/images/decor4.png", price: 400 },
     { name: "Stones", image: "/images/decor5.png", price: 100 },
 ];
+function SummaryItem({
+  item,
+  onUpdate,
+  onRemove,
+}: {
+  item: CartItem;
+  onUpdate: (name: string, qty: number) => void;
+  onRemove: (name: string) => void;
+}) {
+  return (
+    <div className="flex items-center gap-4 bg-green-50 border rounded-xl p-3">
+      <Image src={item.image} alt={item.name} width={60} height={60} />
+
+      <div className="flex-1">
+        <p className="font-semibold text-green-900">{item.name}</p>
+        <p className="text-sm text-green-700">₹{item.price}</p>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <button onClick={() => onUpdate(item.name, item.qty - 1)} className="w-8 h-8 border">−</button>
+        <span className="w-6 text-center">{item.qty}</span>
+        <button onClick={() => onUpdate(item.name, item.qty + 1)} className="w-8 h-8 border">+</button>
+      </div>
+
+      <div className="font-semibold">₹{item.price * item.qty}</div>
+
+      <button onClick={() => onRemove(item.name)} className="text-red-500">✕</button>
+    </div>
+  );
+}
+
+/* ================= MAIN PAGE ================= */
 
 export default function CustomizePage() {
-  const [selectedPlant, setSelectedPlant] = useState<any>(null);
-  const [selectedPot, setSelectedPot] = useState<any>(null);
-  const [selectedPackaging, setSelectedPackaging] = useState<any>(null);
-  const [selectedCard, setSelectedCard] = useState<any>(null);
-  const [selectedPlantCare, setSelectedPlantCare] = useState<any>(null);
-  const [selectedHomeDecor, setSelectedHomeDecor] = useState<any>(null);
-  const [message, setMessage] = useState("");
   const router = useRouter();
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [message, setMessage] = useState("");
 
+  /* GSAP */
   useEffect(() => {
     gsap.utils.toArray<HTMLElement>(".custom-section").forEach((section) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 80 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: section,
-            start: "top 85%",
-          },
-        }
-      );
+      gsap.fromTo(section, { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 });
     });
   }, []);
 
-  const total = [
-    selectedPlant?.price || 0,
-    selectedPot?.price || 0,
-    selectedPackaging?.price || 0,
-    selectedCard?.price || 0,
-    selectedPlantCare?.price || 0,
-    selectedHomeDecor?.price || 0,
-  ].reduce((sum, val) => sum + val, 0);
+  /* ADD ITEM (ALL CATEGORIES) */
+  const addItem = (item: Item, category: string) => {
+    const existing = cart.find((i) => i.name === item.name);
+    if (existing) {
+      setCart(
+        cart.map((i) =>
+          i.name === item.name ? { ...i, qty: i.qty + 1 } : i
+        )
+      );
+    } else {
+      setCart([...cart, { ...item, qty: 1, category }]);
+    }
+  };
 
+  /* TOTAL */
+  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+
+  /* CHECKOUT */
   const handleCheckout = () => {
-    const giftData = {
-      plant: selectedPlant,
-      pot: selectedPot,
-      packaging: selectedPackaging,
-      card: selectedCard,
-      plantCare: selectedPlantCare,
-      homeDecor: selectedHomeDecor,
-      message,
-      total,
-    };
-    localStorage.setItem("customGift", JSON.stringify(giftData));
+    localStorage.setItem(
+      "customGift",
+      JSON.stringify({ cart, message, total })
+    );
     router.push("/checkout");
   };
 
-  const Section = ({ title, items, selectedItem, setSelectedItem }: any) => (
+  /* SECTION */
+  const Section = ({
+    title,
+    items,
+    category,
+  }: {
+    title: string;
+    items: Item[];
+    category: string;
+  }) => (
     <div className="mb-10 custom-section">
       <h2 className="text-3xl font-bold text-green-800 mb-4 text-center">
         {title}
       </h2>
-      <div className="flex gap-6 overflow-x-auto pb-2 px-2">
-        {items.map((item: any) => (
+      <div className="flex gap-6 overflow-x-auto px-2">
+        {items.map((item) => (
           <div
             key={item.name}
-            onClick={() => setSelectedItem(item)}
-            className={`min-w-[180px] p-3 cursor-pointer flex-shrink-0 rounded-2xl border shadow-lg backdrop-blur-md transition-all duration-300 ${
-              selectedItem?.name === item.name
-                ? "border-green-600 bg-white/40"
-                : "border-gray-300 bg-white/20 hover:bg-white/30"
-            }`}
+            onClick={() => addItem(item, category)}
+            className="min-w-[180px] p-3 cursor-pointer rounded-2xl border bg-white hover:border-green-600"
           >
-            <Image
-  src={item.image}
-  alt={item.name}
-  width={140}
-  height={140}
- className="rounded-xl mb-2 object-contain w-full max-h-[170px] bg-white"
-/>
-
-            <p className="text-center text-base font-semibold text-green-900">
-              {item.name}
-            </p>
-            <p className="text-center text-green-700 font-medium">
-              ₹{item.price}
-            </p>
+            <Image src={item.image} alt={item.name} width={140} height={140} />
+            <p className="text-center font-semibold">{item.name}</p>
+            <p className="text-center">₹{item.price}</p>
           </div>
         ))}
       </div>
@@ -204,63 +227,69 @@ export default function CustomizePage() {
   );
 
   return (
-    <div className="bg-[#E1EEBC] min-h-screen w-full pt-28 px-4">
+    <div className="bg-[#E1EEBC] min-h-screen pt-28 px-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-green-900 mb-10 text-center custom-section">
+
+        <h1 className="text-4xl font-bold text-center mb-10 custom-section">
           Customize Your Plant Gift
         </h1>
 
-        <Section title="Choose a Plant" items={plants} selectedItem={selectedPlant} setSelectedItem={setSelectedPlant} />
-        <Section title="Choose a Pot" items={pots} selectedItem={selectedPot} setSelectedItem={setSelectedPot} />
-        <Section title="Choose Packaging" items={packaging} selectedItem={selectedPackaging} setSelectedItem={setSelectedPackaging} />
-        <Section title="Choose a Card" items={cards} selectedItem={selectedCard} setSelectedItem={setSelectedCard} />
-        <Section title="Add Plant Care" items={plantCare} selectedItem={selectedPlantCare} setSelectedItem={setSelectedPlantCare} />
-        <Section title="Add Home Décor" items={homeDecor} selectedItem={selectedHomeDecor} setSelectedItem={setSelectedHomeDecor} />
+        <Section title="Plants" items={plants} category="plant" />
+        <Section title="Pots" items={pots} category="pot" />
+        <Section title="Packaging" items={packaging} category="packaging" />
+        <Section title="Cards" items={cards} category="card" />
+        <Section title="Plant Care" items={plantCare} category="plant-care" />
+        <Section title="Home Décor" items={homeDecor} category="decor" />
 
-        {/* Message Input */}
+        {/* MESSAGE */}
         <div className="mb-10 custom-section">
-          <h2 className="text-2xl font-bold text-green-800 mb-2 text-center">Write Your Message</h2>
           <textarea
-  rows={3}
-  className="w-full border border-green-300 rounded p-2"
-  placeholder="Your message here (optional, up to 30 words)"
-  value={message}
-  onChange={(e) => {
-    const words = e.target.value.trim().split(/\s+/);
-    if (words.length <= 30) {
-      setMessage(e.target.value);
-    }
-  }}
-/>
-
-<p className="text-sm text-green-700 mt-1 text-right">
-  {message.trim() === "" ? 0 : message.trim().split(/\s+/).length}/30 words
-</p>
-
+            rows={3}
+            className="w-full border rounded p-2"
+            placeholder="Gift message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
         </div>
 
-        {/* Summary */}
-        <div className="bg-white/70 border border-green-200 rounded-xl p-6 shadow-md backdrop-blur-md custom-section">
-          <h2 className="text-2xl font-bold text-green-800 mb-4 text-center">
-            Your Custom Gift Summary
+        {/* SUMMARY */}
+        <div className="bg-white rounded-2xl p-6 shadow custom-section">
+          <h2 className="text-2xl font-bold text-center mb-6">
+            🌿 Your Gift Summary
           </h2>
 
-          <ul className="text-green-900 space-y-1 text-center">
-            {selectedPlant && <li><strong>Plant:</strong> {selectedPlant.name} (₹{selectedPlant.price})</li>}
-            {selectedPot && <li><strong>Pot:</strong> {selectedPot.name} (₹{selectedPot.price})</li>}
-            {selectedPackaging && <li><strong>Packaging:</strong> {selectedPackaging.name} (₹{selectedPackaging.price})</li>}
-            {selectedCard && <li><strong>Card:</strong> {selectedCard.name} (₹{selectedCard.price})</li>}
-            {selectedPlantCare && <li><strong>Plant Care:</strong> {selectedPlantCare.name} (₹{selectedPlantCare.price})</li>}
-            {selectedHomeDecor && <li><strong>Home Décor:</strong> {selectedHomeDecor.name} (₹{selectedHomeDecor.price})</li>}
-            <li><strong>Message:</strong> {message || "None"}</li>
-          </ul>
+          <div className="space-y-4">
+            {cart.map((item) => (
+              <SummaryItem
+                key={item.name}
+                item={item}
+                onUpdate={(name, qty) =>
+                  setCart(
+                    qty <= 0
+                      ? cart.filter((i) => i.name !== name)
+                      : cart.map((i) =>
+                          i.name === name ? { ...i, qty } : i
+                        )
+                  )
+                }
+                onRemove={(name) =>
+                  setCart(cart.filter((i) => i.name !== name))
+                }
+              />
+            ))}
+          </div>
+
+          <div className="mt-6 flex justify-between font-bold text-lg">
+            <span>Total</span>
+            <span>₹{total}</span>
+          </div>
 
           <button
             onClick={handleCheckout}
             disabled={total === 0}
-            className="w-full mt-6 px-6 py-3 bg-green-700 text-white rounded shadow hover:bg-green-800 disabled:bg-gray-400"
+            className="w-full mt-6 py-4 bg-green-700 text-white rounded-xl"
           >
-            {total === 0 ? "Select items to proceed" : `Add to Cart & Checkout (₹${total})`}
+            Proceed to Checkout
           </button>
         </div>
       </div>

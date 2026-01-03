@@ -102,6 +102,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     window.location.href = "/login"; // ← BEST way in Next.js
   };
+  const resetPassword = async (email: string) => {
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${window.location.origin}/reset-password`,
+  });
+  if (error) throw error;
+};
+
 
   return (
     <AuthContext.Provider
@@ -112,6 +119,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         signup,
         login,
         logout,
+        resetPassword,
       }}
     >
       {children}

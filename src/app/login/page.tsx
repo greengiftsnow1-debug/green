@@ -10,7 +10,8 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
-  const { login } = useAuth();
+  const { login, resetPassword, user, loading } = useAuth();
+
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
@@ -96,11 +97,26 @@ export default function LoginPage() {
           </form>
 
           <p className="text-center text-white/70 mt-4 text-sm">
-            Forgot your password?{' '}
-            <a href="#" className="text-green-300 hover:underline">
-              Reset here
-            </a>
-          </p>
+  Forgot your password?{" "}
+  <button
+    type="button"
+    onClick={async () => {
+      if (!email) {
+        setError("Please enter your email first");
+        return;
+      }
+      try {
+        await resetPassword(email);
+        alert("Password reset link sent to your email");
+      } catch (err: any) {
+        setError(err.message);
+      }
+    }}
+    className="text-green-300 hover:underline"
+  >
+    Reset here
+  </button>
+</p>
         </div>
       </motion.div>
     </div>

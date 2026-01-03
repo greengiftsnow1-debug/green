@@ -4,9 +4,10 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
 const stats = [
-  { label: 'Orders Delivered', target: 84 },
+  { label: 'Orders Delivered', target: 100 },
   { label: 'Happy Customers', target: 92 },
   { label: 'Plants Available', target: 75 },
+  { label: 'Pot Available', target: 75 },
   
 ];
 
