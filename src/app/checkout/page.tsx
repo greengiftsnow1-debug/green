@@ -322,7 +322,7 @@ const [couponApplied, setCouponApplied] = useState(false);
     🚚 Premimum Gift Delivery
   </p>
   <p className="text-sm text-green-700">
-    We can deliver Yor Gift  from These Two  nursery — 
+    We can deliver Your Gift  from These Two  nursery — 
     <strong> Patel Nagar (462022)</strong> or 
     <strong> C21 Mall (462026)</strong> — 
     Choose Which One Nearest to You.
