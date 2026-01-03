@@ -22,7 +22,7 @@ type CartItem = Item & {
 // 🌿 Plant Options
 const plants = [
   
-  { name: 'Spider Plant', image: '/images/customize/plants/Spider.jpg', price: 1 },
+  { name: 'Spider Plant', image: '/images/customize/plants/Spider.jpg', price: 50},
   { name: 'Peace Lily', image: '/images/customize/plants/Peace Lily.jpg', price: 400 },
   { name: 'Jade Plant', image: '/images/customize/plants/plant4.jpg', price: 50 },
   { name: 'Aloe Vera', image: '/images/customize/plants/Aloe Vera.jpg', price: 50 },
@@ -48,7 +48,7 @@ const plants = [
 
 // 🪴 Pots
 const pots = [
-  { name: 'Arty Pot1', image: '/images/pot1 (1).jpeg', price: 1 },
+  { name: 'Arty Pot1', image: '/images/pot1 (1).jpeg', price: 61 },
    { name: 'Arty Pot2', image: '/images/pot1 (2).jpeg', price: 61 },
    { name: 'Arty Pot3', image: '/images/pot1 (6).jpeg', price: 61 },
    { name: 'Arty Pot4', image: '/images/pot1 (8).jpeg', price: 61 },
@@ -91,14 +91,14 @@ const pots = [
 
 // 🎁 Packaging
 const packaging = [
-  { name: "Gift Bag1", image: "/images/customize/packging1.png", price: 1 },
+  { name: "Gift Bag1", image: "/images/customize/packging1.png", price: 50 },
   { name: "Gift Bag2", image: "/images/customize/pack2.png", price: 50},
   { name: "Gift Bag3", image: "/images/customize/pack3.png", price: 50 },
 ];
 
 // 💌 Cards
 const cards = [
-  { name: 'Birthday Card1', image: '/images/customize/card1.jpg', price:1 },
+  { name: 'Birthday Card1', image: '/images/customize/card1.jpg', price:20 },
  
   { name: 'Birthday Card2', image: '/images/customize/card3.jpg', price: 20 },
   { name: 'Birthday Card3', image: '/images/customize/card4.jpg', price: 20 },
