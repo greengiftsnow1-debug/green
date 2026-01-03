@@ -111,20 +111,7 @@ const cards = [
 
 ];
 
-// 🌱 Plant Care
-const plantCare = [
-  { name: "Vermi Compost", image: "/images/plantcare1.png", price: 50 },
-  { name: "Cocopit", image: "/images/plantcare2.png", price: 50 },
-];
 
-// 🏡 Home Décor
-const homeDecor = [
-  { name: "Bird Nest Grass", image: "/images/decor1.png", price: 120 },
-  { name: "Bird Home1", image: "/images/decor2.png", price: 250 },
-  { name: "Bird Home2", image: "/images/decor3.png", price: 450 },
-   { name: "Artificial ", image: "/images/decor4.png", price: 400 },
-    { name: "Stones", image: "/images/decor5.png", price: 100 },
-];
 function SummaryItem({
   item,
   onUpdate,
@@ -238,8 +225,7 @@ export default function CustomizePage() {
         <Section title="Pots" items={pots} category="pot" />
         <Section title="Packaging" items={packaging} category="packaging" />
         <Section title="Cards" items={cards} category="card" />
-        <Section title="Plant Care" items={plantCare} category="plant-care" />
-        <Section title="Home Décor" items={homeDecor} category="decor" />
+        
 
         {/* MESSAGE */}
         <div className="mb-10 custom-section">
